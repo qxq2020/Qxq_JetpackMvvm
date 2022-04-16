@@ -1,0 +1,2 @@
+rootProject.name = "Qxq_JetpackMvvm"
+include ':app','JetpackMvvm'
