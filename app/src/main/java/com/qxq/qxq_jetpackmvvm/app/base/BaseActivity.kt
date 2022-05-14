@@ -2,6 +2,7 @@ package com.qxq.qxq_jetpackmvvm.app.base
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
+import com.qxq.qxq_jetpackmvvm.app.ext.dismissDialogExt
 import com.qxq.qxq_jetpackmvvm.app.ext.showLoadingExt
 import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
@@ -22,7 +23,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     }
 
     override fun dismissLoading() {
-        dismissLoading()
+        dismissDialogExt()
     }
 
     /**

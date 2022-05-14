@@ -1,11 +1,15 @@
-package com.qxq.qxq_jetpackmvvm
+package com.qxq.qxq_jetpackmvvm.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
+import com.qxq.qxq_jetpackmvvm.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     }
 }
