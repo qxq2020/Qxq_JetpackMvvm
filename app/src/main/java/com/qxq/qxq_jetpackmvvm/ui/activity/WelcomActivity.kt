@@ -24,8 +24,10 @@ class WelcomActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>(), Vi
             return
         }
         if (CacheUtil.isFirst()) {
+
+            mDatabind.bannerView.setAdapter(WelcomeBannerAdapter());
             mDatabind.bannerView.apply {
-                adapter = WelcomeBannerAdapter()
+                setAdapter(WelcomeBannerAdapter())
                 setLifecycleRegistry(lifecycle)
 
 
