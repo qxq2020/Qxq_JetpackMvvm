@@ -10,7 +10,7 @@ import com.zhpan.bannerview.BaseViewHolder
  * @date: 2022/5/15
  * @Description: 欢迎界面适配器
  */
-class WelcomeBannerAdapter : BaseBannerAdapter<String, WelcomeBannerViewHolder>() {
+class WelcomeBannerAdapter : BaseBannerAdapter<Int, WelcomeBannerViewHolder>() {
 
     override fun getLayoutId(viewType: Int): Int {
         return R.layout.banner_itemwelcome
@@ -22,7 +22,7 @@ class WelcomeBannerAdapter : BaseBannerAdapter<String, WelcomeBannerViewHolder>(
 
     override fun onBind(
         holder: WelcomeBannerViewHolder?,
-        data: String?,
+        data: Int,
         position: Int,
         pageSize: Int
     ) {

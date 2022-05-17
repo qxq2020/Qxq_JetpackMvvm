@@ -57,6 +57,14 @@ object CacheUtil {
     }
 
     /**
+     * 是否是第一次登陆
+     */
+    fun setFirst(first:Boolean): Boolean {
+        val kv = MMKV.mmkvWithID("app")
+        return kv.encode("first", first)
+    }
+
+    /**
      * 首页是否开启获取指定文章
      */
     fun isNeedTop(): Boolean {
