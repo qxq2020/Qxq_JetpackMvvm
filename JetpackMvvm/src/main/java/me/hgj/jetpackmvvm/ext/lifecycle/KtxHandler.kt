@@ -24,4 +24,5 @@ class KtxHandler(lifecycleOwner: LifecycleOwner, callback: Callback) : Handler(c
         removeCallbacksAndMessages(null)
         mLifecycleOwner.lifecycle.removeObserver(this)
     }
+
 }

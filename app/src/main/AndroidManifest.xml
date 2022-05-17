@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.MainActivity"
-            android:exported="true">
+            android:name=".ui.activity.WelcomeActivity"
+            android:exported="true"
+            android:theme="@style/FullscreenThemse">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
