@@ -1,14 +1,18 @@
 package com.qxq.qxq_jetpackmvvm.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
-import com.qxq.qxq_jetpackmvvm.R
+import com.qxq.qxq_jetpackmvvm.app.base.BaseActivity
+import com.qxq.qxq_jetpackmvvm.databinding.ActivityMainBinding
+import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+/**
+ *  name： qs
+ *  date： 2022/5/20 13:55
+ *  desc： 项目主页Activity
+ */
+class MainActivity : BaseActivity<BaseViewModel,ActivityMainBinding>() {
+    override fun initView(savedInstanceState: Bundle?) {
+
     }
+
 }
