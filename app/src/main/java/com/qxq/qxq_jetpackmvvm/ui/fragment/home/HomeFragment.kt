@@ -14,6 +14,6 @@ class HomeFragment : BaseFragment<BaseViewModel, FragmentHomeBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
 
-
     }
+
 }
