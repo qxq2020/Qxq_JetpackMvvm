@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.qxq.qxq_jetpackmvvm">
 
+
     <uses-sdk tools:overrideLibrary="me.hgj.jetpackmvvm" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />

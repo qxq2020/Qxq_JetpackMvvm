@@ -15,6 +15,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.kingja.loadsir.core.LoadService
+import com.qxq.qxq_jetpackmvvm.R
 import com.qxq.qxq_jetpackmvvm.app.util.SettingUtil
 import com.qxq.qxq_jetpackmvvm.ui.fragment.home.HomeFragment
 import com.qxq.qxq_jetpackmvvm.ui.fragment.me.MeFragment
@@ -22,12 +23,51 @@ import com.qxq.qxq_jetpackmvvm.ui.fragment.project.ProjectFragment
 import com.qxq.qxq_jetpackmvvm.ui.fragment.publicNumber.PublicNumberFragment
 import com.qxq.qxq_jetpackmvvm.ui.fragment.tree.TreeArrFragment
 import me.hgj.jetpackmvvm.base.appContext
+import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
+import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
+import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 
 /**
  * @author: qs
  * @date: 2022/5/14
- * @Description:
+ * @Description:项目中自定义类的拓展函数
  */
+fun LoadService<*>.setErrorText(message: String) {
+    if (message.isNotEmpty()) {
+        setCallBack(ErrorCallback::class.java) { context, view ->
+            view.findViewById<TextView>(R.id.error_text).text = message
+        }
+    }
+}
+
+/**
+ * 设置错误布局
+ * @param message 错误布局显示的提示内容
+ */
+fun LoadService<*>.showError(message: String = "") {
+    this.setErrorText(message)
+    this.showCallback(ErrorCallback::class.java)
+}
+
+/**
+ * 设置空布局
+ */
+fun LoadService<*>.showEmpty() {
+    this.showCallback(EmptyCallback::class.java)
+}
+
+/**
+ * 设置加载中
+ */
+fun LoadService<*>.showLoading() {
+    this.showCallback(LoadingCallback::class.java)
+}
+
+
+fun a():LoadService<Any>{
+
+}
+
 
 
 /**
@@ -39,10 +79,8 @@ fun hideSoftKeyboard(activity: Activity?) {
         view?.let {
             val inputMethodManager =
                 act.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(
-                view.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS
-            )
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS)
         }
     }
 }
@@ -86,7 +124,8 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
 /**
  * 初始化BottomNavigationViewEx
  */
-fun BottomNavigationViewEx.init(navigationItemSelectedAction: (Int) -> Unit): BottomNavigationViewEx {
+fun BottomNavigationViewEx.init(
+    navigationItemSelectedAction: (Int) -> Unit): BottomNavigationViewEx {
 
     enableAnimation(true)
     enableShiftingMode(false)
