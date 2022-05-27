@@ -15,6 +15,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.kingja.loadsir.core.LoadService
+import com.kingja.loadsir.core.LoadSir
 import com.qxq.qxq_jetpackmvvm.R
 import com.qxq.qxq_jetpackmvvm.app.util.SettingUtil
 import com.qxq.qxq_jetpackmvvm.ui.fragment.home.HomeFragment
@@ -64,10 +65,14 @@ fun LoadService<*>.showLoading() {
 }
 
 
-fun a():LoadService<Any>{
-
+fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
+    val loadSir = LoadSir.getDefault().register(view) {
+        callback.invoke()
+    }
+    loadSir.showSuccess()
+    SettingUtil.setLoadingColor(SettingUtil.getColor(appContext), loadSir)
+    return loadSir
 }
-
 
 
 /**
