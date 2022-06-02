@@ -1,8 +1,8 @@
-package com.qxq.qxq_jetpackmvvm.data.model.bean
+package me.hgj.jetpackmvvm.demo.data.model.bean
 
 /**
- *  name： qs
- *  date： 2022/4/20 17:51
- *  desc：
+ * 作者　: hegaojian
+ * 时间　: 2020/3/4
+ * 描述　:
  */
 class CollectBus(var id: Int, var collect: Boolean)
