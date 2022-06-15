@@ -1,6 +1,7 @@
 package com.qxq.qxq_jetpackmvvm.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
+import com.qxq.qxq_jetpackmvvm.app.ext.request
 import com.qxq.qxq_jetpackmvvm.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
@@ -26,6 +27,20 @@ class RequestHomeViewModel : BaseViewModel() {
 
     //首页轮播图数据
     var bannerData: MutableLiveData<ResultState<ArrayList<BannerResponse>>> = MutableLiveData()
+
+    /**
+     * 获取首页文章列表数据
+     * @param isRefresh 是否是刷新，即第一页
+     */
+    fun getHomeData(isRefresh: Boolean) {
+        if(isRefresh){
+            pageNo =0
+        }
+        request({},{})
+
+
+
+    }
 
 
 }

@@ -1,9 +1,15 @@
 package com.qxq.qxq_jetpackmvvm.app.ext
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.ext.util.loge
 import me.hgj.jetpackmvvm.network.BaseResponse
 import me.hgj.jetpackmvvm.state.ResultState
+import me.hgj.jetpackmvvm.state.paresException
+import me.hgj.jetpackmvvm.state.paresResult
 
 /**
  *  name： qs
@@ -21,6 +27,20 @@ import me.hgj.jetpackmvvm.state.ResultState
  */
 fun <T> BaseViewModel.request(block: suspend () -> BaseResponse<T>,
                               resultState: MutableLiveData<ResultState<T>>,
-                              isShowDialog: Boolean = false, loadingMessage: String = "请求网络中..."){
-
+                              isShowDialog: Boolean = false,
+                              loadingMessage: String = "请求网络中..."): Job {
+    return viewModelScope.launch {
+        runCatching {
+            if (isShowDialog) resultState.value = ResultState.onAppLoading(loadingMessage)
+            //请求体
+            block()
+        }.onSuccess {
+            resultState.paresResult(it)
+        }.onFailure {
+            it.message?.loge()
+            //打印错误栈信息
+            it.printStackTrace()
+            resultState.paresException(it)
+        }
+    }
 }
