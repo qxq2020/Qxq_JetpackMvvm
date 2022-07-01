@@ -1,5 +1,8 @@
 package com.qxq.qxq_jetpackmvvm.data.repository.request
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.withContext
 import me.hgj.jetpackmvvm.demo.data.model.bean.ApiPagerResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.ApiResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
@@ -10,9 +13,6 @@ import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
  *  desc： 处理协程的请求类
  */
 
-
-
-
 class HttpRequestManger {
 
     /**
@@ -20,6 +20,13 @@ class HttpRequestManger {
      */
     suspend fun getHomeData(page:Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
         //同时异步请求2个接口，请求完成后合并数据
+
+        withContext(Dispatchers.IO){
+            val listData = async { api }
+
+
+        }
+
     }
 
 
