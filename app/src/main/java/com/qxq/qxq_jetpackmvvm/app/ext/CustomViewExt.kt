@@ -84,8 +84,10 @@ fun hideSoftKeyboard(activity: Activity?) {
         view?.let {
             val inputMethodManager =
                 act.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(view.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS)
+            inputMethodManager.hideSoftInputFromWindow(
+                view.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
         }
     }
 }
@@ -130,7 +132,8 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
  * 初始化BottomNavigationViewEx
  */
 fun BottomNavigationViewEx.init(
-    navigationItemSelectedAction: (Int) -> Unit): BottomNavigationViewEx {
+    navigationItemSelectedAction: (Int) -> Unit
+): BottomNavigationViewEx {
 
     enableAnimation(true)
     enableShiftingMode(false)
@@ -184,6 +187,13 @@ fun setUiTheme(color: Int, vararg anyList: Any?) {
     }
 }
 
-
+/**
+ * 初始化普通的toolbar 只设置标题
+ */
+fun Toolbar.init(titleStr:String):Toolbar {
+    setBackgroundColor(SettingUtil.getColor(appContext))
+    title = titleStr
+    return this
+}
 
 

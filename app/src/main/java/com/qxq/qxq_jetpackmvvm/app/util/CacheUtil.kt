@@ -3,8 +3,8 @@ package com.qxq.qxq_jetpackmvvm.app.util
 import android.text.TextUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.qxq.qxq_jetpackmvvm.data.model.bean.UserInfo
 import com.tencent.mmkv.MMKV
+import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
 
 /**
  *  name： qs
@@ -38,6 +38,14 @@ object CacheUtil {
             kv.encode("user", Gson().toJson(userResponse))
             setIsLogin(true)
         }
+    }
+
+    /**
+     * 是否已经登录
+     */
+    fun isLogin(): Boolean {
+        val kv = MMKV.mmkvWithID("app")
+        return kv.decodeBool("login", false)
     }
 
     /**
