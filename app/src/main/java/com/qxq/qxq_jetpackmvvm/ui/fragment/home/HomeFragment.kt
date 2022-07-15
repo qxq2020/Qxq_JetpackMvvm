@@ -2,6 +2,7 @@ package com.qxq.qxq_jetpackmvvm.ui.fragment.home
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kingja.loadsir.core.LoadService
 import com.qxq.qxq_jetpackmvvm.R
 import com.qxq.qxq_jetpackmvvm.app.base.BaseFragment
@@ -22,6 +23,8 @@ import me.hgj.jetpackmvvm.ext.navigateAction
  *  desc： 主页
  */
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
+
+    //适配器
 
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>
@@ -49,6 +52,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 true
             }
         }
+        //初始化recyclerView
+        mDatabind.includeList.includeRecyclerview.recyclerView.init(LinearLayoutManager(context),)
+
+
 
 
     }
